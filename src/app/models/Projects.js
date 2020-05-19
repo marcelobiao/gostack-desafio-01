@@ -13,6 +13,10 @@ class Projects extends Model{
 
     return this;
   }
+
+  static associate(models){
+    this.hasMany(models.Tasks, {foreignKey: 'project_id'});
+  }
 }
 
 export default Projects;
