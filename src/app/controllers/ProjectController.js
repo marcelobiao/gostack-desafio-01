@@ -59,6 +59,11 @@ class ProjectController{
 
     res.json({success: 'Project removed'});
   }
+
+  async storeTask(req,res){
+    const projectId = res.params.id;
+
+  }
 }
 
 export default new ProjectController();
