@@ -1,9 +1,12 @@
 import * as Yup from 'yup';
 import Projects from '../models/Projects';
+import Tasks from '../models/Tasks';
 
 class ProjectController{
   async index(req,res){
-    const projects = await Projects.findAll();
+    const projects = await Projects.findAll({
+      include: { association: 'tasks' }
+    });
     res.json(projects);
   }
 
