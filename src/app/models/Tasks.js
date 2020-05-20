@@ -15,7 +15,7 @@ class Tasks extends Model{
   }
 
   static associate(models){
-    this.belongsTo(models.Projects, {foreignKey: 'project_id'});
+    this.belongsTo(models.Projects, {foreignKey: 'project_id', as: 'projects'});
   }
 }
 
