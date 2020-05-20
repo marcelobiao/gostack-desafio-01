@@ -61,8 +61,25 @@ class ProjectController{
   }
 
   async storeTask(req,res){
-    const projectId = res.params.id;
+    const schema = Yup.object().shape({
+      title: Yup.string().required(),
+    });
 
+    if(!(await schema.isValid(req.body))){
+      return res.status(400).json({error: 'Validation fails'});
+    }
+
+    const project = await Projects.findByPk(req.params.id);
+
+    if(!project){
+      return res.json({error: 'Project not exists'});
+    }
+
+    const {title} = await Tasks.create({title: req.body.title, project_id: req.params.id});
+
+    return res.json({
+      title
+    });
   }
 }
 
