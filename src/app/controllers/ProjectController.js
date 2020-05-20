@@ -38,10 +38,6 @@ class ProjectController{
 
     const project = await Projects.findByPk(req.params.id);
 
-    if(!project){
-      return res.json({error: 'Project not exists'});
-    }
-
     const {id, title} = await project.update(req.body);
 
     return res.json({
@@ -53,10 +49,6 @@ class ProjectController{
 
   async delete(req,res){
     const project = await Projects.findByPk(req.params.id);
-
-    if(!project){
-      res.json({error: 'Project not found'});
-    }
 
     project.destroy();
 
@@ -70,12 +62,6 @@ class ProjectController{
 
     if(!(await schema.isValid(req.body))){
       return res.status(400).json({error: 'Validation fails'});
-    }
-
-    const project = await Projects.findByPk(req.params.id);
-
-    if(!project){
-      return res.json({error: 'Project not exists'});
     }
 
     const {title} = await Tasks.create({title: req.body.title, project_id: req.params.id});
