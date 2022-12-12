@@ -9,7 +9,7 @@
     "dev:debug": "nodemon --inspect src/server.js"
   },
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "sequelize": "^5.21.9",
     "sqlite3": "^4.2.0",
     "yup": "^0.28.5"
